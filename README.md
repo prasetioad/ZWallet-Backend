@@ -1,27 +1,77 @@
-# ZWallet-Backend
+# ZWallet API
 
-# About
-ZWallet , aplikasi penyimpanan uang online yang memiliki fitur chart mutasi data.
+<!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
+Ini adalah API untuk Zwallet dimana seseorang bisa melakukan transaksi antara satu dengan lainnya.
 
-### About
+## Built with
 
-### Teknologi
-* Next Js
-* Express js
-* React js
-* Sequelize
-* 
-## Display
-### 1.) Login  
-![Login](https://user-images.githubusercontent.com/77045083/117056856-fc787200-ad46-11eb-8329-9d9aac0cf244.png)  
-### 2.) Home  
-![Home](https://user-images.githubusercontent.com/66661143/117105658-b227dd00-ada8-11eb-94e0-43e1835d85ed.jpg)  
-### 3.) Transfer
-![Transfer](https://user-images.githubusercontent.com/66661143/117105668-b522cd80-ada8-11eb-8325-664716bfbf5a.jpg)  
-### 4.) Profil 
-![Profil](https://user-images.githubusercontent.com/66661143/117105937-337f6f80-ada9-11eb-9bbf-a1dc98b9bfa9.jpg)  
+* [NodeJs](https://nodejs.org/en/)
+* [ExpressJs](https://expressjs.com/)
 
-### Kunjungi
-- https://zw-allet-front-end-ls26hj12z-prasetioad.vercel.app/login
-### Frontend
-- https://github.com/prasetioad/ZWalletFrontEnd
+## Requirment
+* [NodeJs](https://nodejs.org/en/)
+* [ExpressJs](https://expressjs.com/) for testing
+* [Postman](https://www.postman.com/)
+* Database
+
+
+## Instalation
+1. Clone the repo
+
+```
+git clone https://github.com/prasetioad/ZWallet-Backend.git
+
+```
+2. Install NPM Packages 
+```
+npm install
+```
+## Add .env file at root folder project, and add following
+```
+# -------------------------------
+#           CONFIG DB
+# -------------------------------
+DB_HOST=localhost
+DB_USER=root
+DB_PASSWORD=
+DB_NAME=zwallet
+DB_DIALECT=mysql
+
+# --------------------------------
+#           CONFIG GENERAL
+# --------------------------------
+PORT=3600
+HOST=http://localhost:3600
+SECRET_KEY=ZWallet2021
+STATIC_FOLDER=/avatar
+
+#----------------------------------
+#           CONFIG MAILER
+#----------------------------------
+
+HOSTING = http://localhost:3000/
+EMAIL = use your email here
+PASSWORD = use your password here
+```
+## Run the app
+``` 
+npm run dev 
+```
+
+## Rest API
+you can open postman collection [here](https://documenter.getpostman.com/view/14778352/TzRa6PEG)
+or
+[RUN IN POSTMAN](https://www.getpostman.com/collections/9ae47d30b8f57603a077)
+
+### Front End
+* https://github.com/prasetioad/ZWalletFrontEnd
+
+### Back End
+* https://github.com/prasetioad/ZWallet-Backend
+
+## Live Demo
+* https://zw-allet-front-end-ls26hj12z-prasetioad.vercel.app/login
+
+## Author
+* [@prasetioad](https://github.com/prasetioad)
+
