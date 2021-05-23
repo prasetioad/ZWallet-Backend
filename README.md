@@ -66,9 +66,6 @@ or
 ### Front End
 * https://github.com/prasetioad/ZWalletFrontEnd
 
-### Back End
-* https://github.com/prasetioad/ZWallet-Backend
-
 ## Live Demo
 * https://zwallet-sigma.vercel.app/login
 
