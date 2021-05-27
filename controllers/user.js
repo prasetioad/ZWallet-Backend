@@ -5,7 +5,8 @@ const formResult = require('../helpers/formResult');
 const paginate = require('../helpers/pagination.js')
 const jwt = require('jsonwebtoken')
 const sendMail = require('../middleware/mailer');
-const { getTokenVerify, decodeToken, getToken, decodeByHeader } = require('../helpers/jwthelper');
+const sendForgotMail = require('../middleware/forgotMailer')
+const { getTokenVerify, decodeToken, getToken, decodeByHeader, verifyToken } = require('../helpers/jwthelper');
 const { Op } = require("sequelize");
 
 const User = db.user
@@ -248,4 +249,47 @@ exports.search = (req, res)=>{
       })
       .then(albums => console.log(albums))
       .catch(console.error)
+}
+
+exports.resetPassword= async(req, res)=>{
+    try{
+        console.log(req.body);
+    const found = await User.findOne({where: req.body}).then((res)=> {return res.dataValues})
+    .catch((err)=>{ return formResult(res, 401, false, 'Email tidak terdaftar!', err)})
+    if(found == null){
+        return formResult(res, 401, false, 'Email tidak terdaftar!', err)
+    }else{
+        console.log('mengirim email ...');
+        const data = {userId: found.userId, email: found.email}
+        const token = getToken(data)
+        const status = await sendForgotMail(token, found.userId, found.email)
+        return formResult(res, 201, true, 'Email terkirim!', status)
+    }
+    } catch (err){
+        return formResult(res, 401, false, 'Internal Server Error!', err)
+    }
+}
+
+exports.updateUser = async(req, res)=>{
+    try{
+        const cek = verifyToken(req)
+        if(!cek){
+            return formResult(res, 401, false, 'Token expired!', err)
+        }else{
+            console.log(req.params.id);
+            req.body.password = await bcrypt.hash(req.body.password, 10)
+            .then((result)=>{req.body.password = result; return req.body.password})
+            console.log(req.body);
+            User.update(req.body, {where: {userId : req.params.id}})
+            .then((result)=>{
+                return formResult(res, 201, true, 'Success', result)
+            })
+            .catch((err)=>{
+                console.log(err);
+                return formResult(res, 401, false, 'Internal Server Error', err)
+            })
+        }
+    } catch {
+        return formResult(res, 401, false, 'Internal Server Error', err)
+    }
 }

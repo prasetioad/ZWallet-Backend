@@ -38,6 +38,15 @@ exports.getTrxById =(req, res)=>{
         formResult(res, 501, false, err, null)
     })
 }
+exports.getTrxById =(req, res)=>{
+    Trx.findAll({where:{id: req.params.id}})
+    .then((result)=>{
+        formResult(res, 201, true, 'success', result)
+    })
+    .catch((err)=>{
+        formResult(res, 501, false, err, null)
+    })
+}
 
 exports.creatTrx =(req, res)=>{
     req.body.dateTime = new Date()

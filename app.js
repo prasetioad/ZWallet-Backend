@@ -14,7 +14,6 @@ app.use(express.urlencoded({extended:true}))
 app.use("/avatar", express.static('./uploads'));
 app.use(bodyParser.json())
 
-
 db.sequelize.sync().then(
     () => console.log(`[DATABASES] Connected`),
     (err) => console.log(`[DATABASES] Failed To Connect (${err})`)

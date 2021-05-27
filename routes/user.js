@@ -15,5 +15,7 @@ router.put('/avatar/:id',upload.single('avatar'), user.avatar)
 router.put('/profile/:id',Auth, user.profile)
 router.post('/pin/:id',Auth, user.checkPin)
 router.post('/change/:id', Auth, user.change)
+router.post('/reset/', user.resetPassword)
+router.put('/:id', user.updateUser)
 
 module.exports = router
