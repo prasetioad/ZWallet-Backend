@@ -11,7 +11,7 @@
 # ZWallet API
 
 <!--- These are examples. See https://shields.io for others or to customize this set of shields. You might want to include dependencies, project status and licence info here --->
-Ini adalah API untuk Zwallet dimana seseorang bisa melakukan transaksi antara satu dengan lainnya.
+This is an API for Zwallet where one can make transactions between one another.
 
 ## Built with
 
